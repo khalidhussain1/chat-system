@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-@include('admin.layout.head');
+@include('admin.layout.head')
 
 <body>
   @section('head')
@@ -9,45 +9,26 @@
     <nav class="navbar navbar-expand-lg">
       <div class="search-panel">
         <div class="search-inner d-flex align-items-center justify-content-center">
-          <div class="close-btn">
-            Close
-            <i class="fa fa-close">
-            </i>
-          </div>
-          <form action="#" id="searchForm">
+          <div class="close-btn">Close <i class="fa fa-close"></i></div>
+          <form id="searchForm" action="#">
             <div class="form-group">
-              <input name="search" placeholder="What are you searching for..." type="search">
-              <button class="submit" type="submit">
-                Search
-              </button>
-              </input>
+              <input type="search" name="search" placeholder="What are you searching for...">
+              <button type="submit" class="submit">Search</button>
             </div>
           </form>
         </div>
       </div>
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
-          <!-- Navbar Header-->
-          <a class="navbar-brand" href="index.html">
-            <div class="brand-text brand-big visible text-uppercase">
-              <strong class="text-primary">
-                LOGO
-              </strong>
-
-            </div>
-            <div class="brand-text brand-sm">
-              <strong class="text-primary">
-                L
-              </strong>
-            </div>
+          <!-- Navbar Header--><a href="index.html" class="navbar-brand">
+            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Logo</strong></div>
+            <div class="brand-text brand-sm"><strong class="text-primary">L</strong></div>
           </a>
           <!-- Sidebar Toggle Btn-->
-          <button class="sidebar-toggle">
-            <i class="fa fa-long-arrow-left">
-            </i>
-          </button>
+          <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
         </div>
-        <div class="right-menu list-inline no-margin-bottom">         
+        <div class="right-menu list-inline no-margin-bottom">
+          <div class="list-inline-item logout"> <a id="logout" href="{{url('logout')}}" class="nav-link">Logout <i class="icon-logout"></i></a></div>
         </div>
       </div>
     </nav>
@@ -72,8 +53,8 @@
       <ul class="list-unstyled">
         <li class=""><a href="{{url('Client/index')}}"> <i class="icon-home"></i>Dashboard</a></li>
         <li class=""><a href="{{url('Client/designers')}}"> <i class="icon-home"></i>Chat</a></li>
-        <li class=""><a href=""> <i class="icon-home"></i>Dashboard</a></li>
-        <li class=""><a href=""> <i class="icon-home"></i>Dashboard</a></li>
+        <li class=""><a href="{{url('/plan')}}"> <i class="icon-home"></i>Plan </a></li>
+        <li class=""><a href="{{url('Client/projects')}}"> <i class="icon-home"></i>My Projects </a></li>
         <li class=""><a href="{{route('client.profile-settings')}}"> <i class="icon-home"></i>Settings</a></li>
       </ul>
     </nav>

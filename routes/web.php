@@ -6,7 +6,10 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DesignerController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\PaymentController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +25,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/signup', function () {
+//     Auth::logout();
+//     return redirect('/register');
+// });
+
+Route::get('/projects', function () {
+    return view('Admin.ProjectDetailPage');
+})->name('projects');
+
+Route::get('/plan', function () {
+    return view('Admin.plan');
+});
+
+Route::post('/projectdetail', [AdminController::class, 'project_detail'])->name('project');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
@@ -41,11 +58,24 @@ Route::group(['prefix' => 'Admin'], function () {
     Route::post('/update_user', [AdminController::class, 'update_user']);
     Route::any('/delete/{id}', [AdminController::class, 'delete']);
     Route::get('/details/{id}', [AdminController::class, 'user_details']);
+    Route::get('/updates', [AdminController::class,'updates'])->name('admin.updates');
+    Route::get('/payroll', [AdminController::class,'payroll'])->name('admin.payroll');
     // Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 });
+// ================================= Project Manager  Routes =========================
+Route::group(['prefix' => 'Manager'], function () {
+    Route::view('/project', 'Admin.project-posting')->name('admin.project-posting');
+    Route::post('/assign-project', [ManagerController::class, 'assigning_projects'])->name('manager.assignprojects');
+    Route::post('/chat-visibility', [AdminController::class,'chat_visibility'])->name('admin.chat-visibility');
+    Route::get('/chat-option', [Admincontroller::class,'messages'])->name('admin.chat-option');
+    Route::view('/chat', 'Admin.chat-visibility')->name('admin.chat');
+    Route::view('/reports', 'Admin.reporting')->name('manager.reports');
+    Route::post('/reporting', [AdminController::class,'reports'])->name('admin.reporting');
+    Route::get('/post-project', [AdminController::class,'post_project'])->name('admin.projectposting');
+    Route::post('/post', [AdminController::class,'post'])->name('admin.post');
 
-
+});
 // ================================= Designer Routes =========================
 Route::group(['prefix' => 'Designer'], function () {
     Route::view('/index', 'Designer.index')->name('designer.index');
@@ -54,7 +84,8 @@ Route::group(['prefix' => 'Designer'], function () {
     Route::view('/settings', 'Designer.password-settings')->name('designer.settings');
     Route::view('/profile', 'Designer.profile-settings')->name('designer.profile-settings');
 
-    
+    // Route::view('/projects', 'Designer.assigned-projects')->name('designer.assigned-projects');
+    Route::get('/projects', [DesignerController::class, 'designer_projects']);
 });
 
 // ================================= Employee Routes =========================
@@ -62,7 +93,7 @@ Route::group(['prefix' => 'Employee'], function () {
     Route::view('/index', 'Employee.index')->name('employee.index');
     Route::post('/update_information', [SettingsController::class, 'update_information'])->name('employee.update_information');
     Route::post('/change_password', [SettingsController::class, 'change_password'])->name('employee.change_password');
-    Route::view('/settings', 'Employee.password-settings'  )->name('employee.settings');
+    Route::view('/settings', 'Employee.password-settings')->name('employee.settings');
     Route::view('/profile', 'Employee.profile-settings')->name('employee.profile-settings');
 });
 
@@ -72,11 +103,12 @@ Route::group(['prefix' => 'Client'], function () {
     Route::view('/index', 'Client.index')->name('client.index');
     Route::post('/update_information', [SettingsController::class, 'update_information'])->name('client.update_information');
     Route::post('/change_password', [SettingsController::class, 'change_password'])->name('client.change_password');
-    Route::view('/settings', 'Client.password-settings'  )->name('client.settings');
+    Route::view('/settings', 'Client.password-settings')->name('client.settings');
     Route::view('/profile', 'Client.profile-settings')->name('client.profile-settings');
     Route::get('/designers', [DesignerController::class, 'designers']);
     Route::post('/update_user', [ClientController::class, 'update_user']);
     Route::any('/delete/{id}', [ClientController::class, 'delete']);
+    Route::get('/projects', [ClientController::class,'projects'])->name('client.projects');
 });
 
 
@@ -93,3 +125,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');;
 Route::get('/logout', [UserController::class, 'logout']);
+
+// ====================== paypal routes ======================
+
+Route::get('payment', [PaymentController::class,'index']);
+Route::post('charge', [PaymentController::class,'charge']);
+Route::get('success', [PaymentController::class,'success']);
+Route::get('error', [PaymentController::class,'error']);

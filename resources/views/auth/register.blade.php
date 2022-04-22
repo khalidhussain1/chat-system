@@ -1,10 +1,25 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+        @if (session()->has('success'))
+
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+        @endif
             <div class="card">
+
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -48,6 +63,7 @@
                                  
                                     <option value="designer">Designer</option>
                                     <option value="employe">Employee</option>
+                                    <option value="client">Client</option>
                                 </select>
 
                                 <!-- @error('email')

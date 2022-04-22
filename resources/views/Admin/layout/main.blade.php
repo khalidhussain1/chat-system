@@ -1,57 +1,35 @@
 <!DOCTYPE html>
 <html>
 
-@include('admin.layout.head');
+@include('admin.layout.head')
 
 <body>
   @section('head')
+
   <header class="header">
     <nav class="navbar navbar-expand-lg">
       <div class="search-panel">
         <div class="search-inner d-flex align-items-center justify-content-center">
-          <div class="close-btn">
-            Close
-            <i class="fa fa-close">
-            </i>
-          </div>
-          <form action="#" id="searchForm">
+          <div class="close-btn">Close <i class="fa fa-close"></i></div>
+          <form id="searchForm" action="#">
             <div class="form-group">
-              <input name="search" placeholder="What are you searching for..." type="search">
-              <button class="submit" type="submit">
-                Search
-              </button>
-              </input>
+              <input type="search" name="search" placeholder="What are you searching for...">
+              <button type="submit" class="submit">Search</button>
             </div>
           </form>
         </div>
       </div>
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
-          <!-- Navbar Header-->
-          <a class="navbar-brand" href="index.html">
-            <div class="brand-text brand-big visible text-uppercase">
-              <strong class="text-primary">
-               Logo
-              </strong>
-
-            </div>
-            <div class="brand-text brand-sm">
-              <strong class="text-primary">
-                L
-              </strong>
-
-            </div>
+          <!-- Navbar Header--><a href="index.html" class="navbar-brand">
+            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Logo</strong></div>
+            <div class="brand-text brand-sm"><strong class="text-primary">L</strong></div>
           </a>
           <!-- Sidebar Toggle Btn-->
-          <button class="sidebar-toggle">
-            <i class="fa fa-long-arrow-left">
-            </i>
-          </button>
+          <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
         </div>
         <div class="right-menu list-inline no-margin-bottom">
-
-
-         
+          <div class="list-inline-item logout"> <a id="logout" href="{{url('logout')}}" class="nav-link">Logout <i class="icon-logout"></i></a></div>
         </div>
       </div>
     </nav>
@@ -63,22 +41,32 @@
     <nav id="sidebar">
       <!-- Sidebar Header-->
       <div class="sidebar-header d-flex align-items-center">
-     
+
         <div class="avatar"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JyScJ3XAm0g9mNMQ1Ws7EI6LoVgs7_HDXg&usqp=CAU" alt="..." class="img-fluid rounded-circle"></div>
-        
-    
+
+
         <div class="title">
-       
+
 
         </div>
       </div>
       <!-- Sidebar Navidation Menus-->
       <ul class="list-unstyled">
         <li class=""><a href="{{route('admin.index')}}"> <i class="icon-home"></i>Dashboard</a></li>
+        @if(Auth()->user()->role=='admin' || Auth()->user()->role=='Headmanager' )
         <li class=""><a href="{{route('admin.create-users')}}"> <i class="icon-home"></i>Create Accounts</a></li>
-        <li class=""><a href=""> <i class="icon-home"></i>Payrolls</a></li>
+        <li class=""><a href="{{url('Admin/payroll')}}"> <i class="icon-home"></i>Payrolls</a></li>
+        @endif
+        @if(Auth()->user()->role=='admin' || Auth()->user()->role=='Headmanager' )
+        <li class=""><a href="{{route('admin.updates')}}"> <i class="icon-home"></i>Updates </a></li>
+        @endif
         <li class=""><a href="{{url('Admin/users')}}"> <i class="icon-home"></i>Users</a></li>
-        <li class=""><a href=""> <i class="icon-home"></i>Chats</a></li>
+        @if(Auth()->user()->role=='projectmanager')
+        <li class=""><a href="{{url('Manager/post-project')}}"> <i class="icon-home"></i>Post Project</a></li>
+        <li class=""><a href="{{url('Manager/project')}}"> <i class="icon-home"></i>Assign Projects</a></li>
+        <li class=""><a href="{{route('manager.reports')}}"> <i class="icon-home"></i>Report/Updates</a></li>
+        <li class=""><a href="{{url('Manager/chat-option')}}"> <i class="icon-home"></i>Chat Visibility</a></li>
+        @endif
         <li class=""><a href="{{route('admin.profile-settings')}}"> <i class="icon-home"></i>Settings</a></li>
       </ul>
     </nav>

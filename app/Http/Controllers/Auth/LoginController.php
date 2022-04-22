@@ -30,16 +30,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
-    public function redirectTo()
-    {
-
-
-        if (Auth()->user()->role == 'admin') {
-            return redirect('admin.index');
-        } else if (Auth()->user()->role == 'user') {
-            return redirect('user.index');
-        }
-    }
+   
 
     /**
      * Create a new controller instance.
@@ -53,27 +44,28 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-      
-     
-    //    $role=$request->role;
-  
+
+
+        //    $role=$request->role;
+
         $input = $request->all();
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->role == 'admin') {
+            if (auth()->user()->role == 'admin' || auth()->user()->role == 'projectmanager' || auth()->user()->role == 'owner' ) {
                 return redirect()->route('admin.index');
             } elseif (auth()->user()->role == 'designer') {
                 return redirect()->route('designer.index');
-            }
-            elseif (auth()->user()->role == 'employe') {
+            } elseif (auth()->user()->role == 'employe') {
                 return redirect()->route('employee.index');
-            }
-            elseif (auth()->user()->role == 'client') {
+            } elseif (auth()->user()->role == 'client') {
                 return redirect()->route('client.index');
+            }
+            elseif (auth()->user()->role == 'Headmanager') {
+                return redirect()->route('admin.index');
             }
             
         } else {
             Auth::logout();
-            return redirect()->route('login')->with('error','Credentials Are not Right');
+            return redirect()->route('login')->with('error', 'Credentials Are not Right');
         }
     }
 }

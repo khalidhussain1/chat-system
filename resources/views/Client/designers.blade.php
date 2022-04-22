@@ -42,7 +42,7 @@
                     <tr>
                       <th>#</th>
                       <th>Name</th>
-                      <th>Email</th>
+                      <th>Project</th>
                       <th>Chat</th>
                     </tr>
                   </thead>
@@ -52,9 +52,9 @@
                     @php $p++; @endphp
                       <tr>
                         <th scope="row">{{$p}}</th>
-                        <td>{{$row->name}}</td>
-                        <td>{{$row->email}}</td>
-                        <td><a href="{{url('/chatify/'.$row->id)}}"><button class="btn btn-primary">Chat</button></a></td>
+                        <td>{{$row->designer->name}}</td>
+                        <td>{{$row->project->title}}</td>
+                        <td><a href="{{url('/chatify/'.$row->designer->id)}}"><button class="btn btn-primary">Chat</button></a></td>
                      
                       </tr>
                     <div id="myModal{{$p}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">

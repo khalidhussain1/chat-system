@@ -28,6 +28,9 @@
   <link rel="shortcut icon" href="{{asset('dashboard/js/chart1.js')}}">
   <!-- Font Awesome cdn -->
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  
 
+
+ 
 
 </head>
