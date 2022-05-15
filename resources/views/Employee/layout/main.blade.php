@@ -53,8 +53,9 @@
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
           <!-- Navbar Header--><a href="index.html" class="navbar-brand">
-            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Logo</strong></div>
-            <div class="brand-text brand-sm"><strong class="text-primary">L</strong></div>
+          <div class="brand-text brand-big visible text-uppercase"><img src="{{asset('logo.PNG')}}" style="width: 140px"></div>
+            <!-- <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">NO LIMIT Logos</strong></div> -->
+            <div class="brand-text brand-sm"><strong class="text-primary">NLL</strong></div>
           </a>
           <!-- Sidebar Toggle Btn-->
           <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
@@ -84,10 +85,12 @@
       <!-- Sidebar Navidation Menus-->
       <ul class="list-unstyled">
         <li class=""><a href="{{url('Employee/index')}}"> <i class="icon-home"></i>Dashboard</a></li>
-        <li class=""><a href=""> <i class="icon-home"></i>Payments</a></li>
+        <li class=""><a href="{{route('employee.requestt')}}"> <i class="icon-home"></i>Payments</a></li>
+        <li class=""><a href="{{route('employee.status')}}"> <i class="icon-home"></i>Status</a></li>
         <li class=""><a href=""> <i class="icon-home"></i>Withdraw</a></li>
         <li class=""><a href="{{route('employee.profile-settings')}}"> <i class="icon-home"></i>Settings</a></li>
       </ul>
+   
     </nav>
     @show
     <!-- Sidebar Navigation end-->

@@ -31,22 +31,16 @@
                         <input type="file" class="form-control mt-2" name="sample">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control mt-2" placeholder="name" name="name">
+                        <input type="text" class="form-control mt-2" placeholder="Name" name="name">
                     </div>
                     <div class="col-md-6">
-                        <input type="text" class="form-control mt-2" placeholder="email" name="email">
+                        <input type="text" class="form-control mt-2" placeholder="Email" name="email">
                     </div>
                     <div class="col-md-3">
-                        <input type="text" class="form-control mt-2" placeholder="phone" name="phone">
+                        <input type="text" class="form-control mt-2" placeholder="Phone" name="phone">
                     </div>
                     <div class="col-md-3">
-
-                        <select class="custom-select mt-2" id="inputGroupSelect03" aria-label="Example select with button addon" name="industry">
-                            <option selected>Industry </option>
-                            <option value="tech">Tech</option>
-                            <option value="other">Other</option>
-
-                        </select>
+                    <input type="text" class="form-control mt-2" placeholder="Industry" name="industry">
                     </div>
                     <div class="col-md-3">
                         <div class="input-group mb-3">

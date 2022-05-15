@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <select class="custom-select mt-2 bg-dark " name="to">
-                            <option selected>To </option>
+                            <option selected>Client </option>
                             @foreach(users() as $item)
                             <option value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach
@@ -113,7 +113,7 @@
                     </div>
                     <div class="col-md-4">
                         <select class="custom-select mt-2 bg-dark " name="from">
-                            <option selected>From </option>
+                            <option selected>Designer </option>
                             @foreach(users() as $item)
                             <option value="{{$item->id}}">{{$item->name}}</option>
                             @endforeach

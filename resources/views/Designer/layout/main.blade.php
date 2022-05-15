@@ -19,8 +19,9 @@
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
           <!-- Navbar Header--><a href="index.html" class="navbar-brand">
-            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Logo</strong></div>
-            <div class="brand-text brand-sm"><strong class="text-primary">L</strong></div>
+            <!-- <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">No Limit Logos</strong></div> -->
+            <div class="brand-text brand-big visible text-uppercase"><img src="{{asset('logo.PNG')}}" style="width: 140px"></div>
+            <div class="brand-text brand-sm"><strong class="text-primary">NLL</strong></div>
           </a>
           <!-- Sidebar Toggle Btn-->
           <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>

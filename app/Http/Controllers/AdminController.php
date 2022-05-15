@@ -14,17 +14,29 @@ use App\Models\ProjectMedia;
 use App\Models\Update;
 use App\Notifications\RegisteraccountlNotification;
 use Illuminate\Support\Facades\Mail;
+use App\Models\PaymentRequest;
 
 class AdminController extends Controller
 {
     public function  create_user(Request $request)
     {
-        $data = new User();
-        $data->name = $request->firstname;
-        $data->email = $request->email;
-        $data->password = Hash::make($request->passowrd);
-        $data->role = $request->role;
-        $data->save();
+        // dd($request->password);
+        $p=$request->password;
+         User::create([
+            'name' => $request->firstname,
+            'email' => $request->email,
+            'role'  => $request->role,
+            'type'  => $request->type,
+            'password' => Hash::make($p),
+        ]);
+        // $data = new User();
+        // $data->name = $request->firstname;
+        // $data->email = $request->email;
+        // $data->password = Hash::make($request->passowrd);
+        // $data->role = $request->role;
+        // $data->type=$request->type;
+        // $data->save();
+
         return redirect()->back()->with('success', 'User Has been addedd successfully');
     }
 
@@ -64,7 +76,8 @@ class AdminController extends Controller
     public function user_details($id)
     {
         $data = User::find($id);
-        dd($data->name);
+        return $data;
+    
     }
 
     public function chat_visibility(Request $request)
@@ -208,4 +221,26 @@ $user=ProjectDetail::latest()->first();
     
 }
 
+public function payment_status(){
+    $data=PaymentRequest::where('employee_id',Auth()->user()->id)->get();
+    // dd($data);
+    return view('admin.status',compact('data'));
+}  
+
+public function requests(){
+    
+    $data=PaymentRequest::where('status',0)->get();
+    // dd($data);
+
+    return view('admin.requests',compact('data'));
+}
+
+public function statuschnage($id){
+    $affected = DB::table('payment_requests')
+              ->where('id', $id)
+              ->update(['status' => 1]);
+              $data=PaymentRequest::where('id',$id)->get();
+         return redirect()->back()->with('success','Withdraw Approved Successfully ');
+  
+}
 }

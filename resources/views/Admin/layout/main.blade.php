@@ -20,10 +20,11 @@
         </div>
       </div>
       <div class="container-fluid d-flex align-items-center justify-content-between">
-        <div class="navbar-header">
+        <div class="navbar-header p-0">
           <!-- Navbar Header--><a href="index.html" class="navbar-brand">
-            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Logo</strong></div>
-            <div class="brand-text brand-sm"><strong class="text-primary">L</strong></div>
+            <!-- <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">No Limit Logos</strong></div> -->
+            <div class="brand-text brand-big visible text-uppercase"><img src="{{asset('logo.PNG')}}" style="width: 140px"></div>
+            <div class="brand-text brand-sm"><strong class="text-primary">NLL</strong></div>
           </a>
           <!-- Sidebar Toggle Btn-->
           <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
@@ -59,12 +60,22 @@
         @endif
         @if(Auth()->user()->role=='admin' || Auth()->user()->role=='Headmanager' )
         <li class=""><a href="{{route('admin.updates')}}"> <i class="icon-home"></i>Updates </a></li>
-        @endif
+        @endif 
+        @if(Auth()->user()->role=='admin' )
+        <li class=""><a href="{{url('Manager/chat-option')}}"> <i class="icon-home"></i>Chat Visibility</a></li>  
+        <li class=""><a href="{{route('admin.requests')}}"> <i class="icon-home"></i>Payment Requests </a></li>
+        @endif  
         <li class=""><a href="{{url('Admin/users')}}"> <i class="icon-home"></i>Users</a></li>
+        @if(Auth()->user()->role=='Headmanager')
+        <li class=""><a href="{{url('Manager/employes')}}"> <i class="icon-home"></i>Employes</a></li>
+        @endif
         @if(Auth()->user()->role=='projectmanager')
+    
         <li class=""><a href="{{url('Manager/post-project')}}"> <i class="icon-home"></i>Post Project</a></li>
         <li class=""><a href="{{url('Manager/project')}}"> <i class="icon-home"></i>Assign Projects</a></li>
         <li class=""><a href="{{route('manager.reports')}}"> <i class="icon-home"></i>Report/Updates</a></li>
+        <li class=""><a href="{{url('Admin/payment-request')}}"> <i class="icon-home"></i>Payments </a></li>
+        <li class=""><a href="{{url('Admin/status')}}"> <i class="icon-home"></i>Status </a></li>
         <li class=""><a href="{{url('Manager/chat-option')}}"> <i class="icon-home"></i>Chat Visibility</a></li>
         @endif
         <li class=""><a href="{{route('admin.profile-settings')}}"> <i class="icon-home"></i>Settings</a></li>

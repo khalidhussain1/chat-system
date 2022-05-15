@@ -63,7 +63,7 @@
                                 <div class="title">
                                     <div class="icon"><i style="color:#7878c1" class="fa fa-wallet"></i></div><strong>Logo Design </strong>
                                 </div>
-                                <div class="number dashtext-1" style="color:white !important ">300 $</div>
+                                <div class="number dashtext-1" style="color:white !important ">$300.00 </div>
                             </div>
                             <div class="progress progress-template">
                                 <div role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>
@@ -88,7 +88,7 @@
                                 <div class="title">
                                     <div class="icon"><i style="color:#7878c1" class="fa fa-wallet"></i></div><strong>Illustration Design </strong>
                                 </div>
-                                <div class="number dashtext-1" style="color:white !important ">400 $</div>
+                                <div class="number dashtext-1" style="color:white !important ">$400.00</div>
                             </div>
                             <div class="progress progress-template">
                                 <div role="progressbar" style="width: 100%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>

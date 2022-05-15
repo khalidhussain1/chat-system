@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DesignerController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ManagerController;
@@ -22,13 +23,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
-// Route::get('/signup', function () {
-//     Auth::logout();
-//     return redirect('/register');
-// });
+
 
 Route::get('/projects', function () {
     return view('Admin.ProjectDetailPage');
@@ -38,15 +36,13 @@ Route::get('/plan', function () {
     return view('Admin.plan');
 });
 
-Route::post('/projectdetail', [AdminController::class, 'project_detail'])->name('project');
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::post('/projectdetail', [AdminController::class,'project_detail'])->name('project');
+
 
 
 
 // ================================= Admin Routes =========================
-Route::group(['prefix' => 'Admin'], function () {
+Route::group(['prefix' => 'Admin','middleware' => ['auth:web']], function () {
     Route::view('/index', 'Admin.index')->name('admin.index');
     Route::view('/create-users', 'Admin.create-users')->name('admin.create-users');
     Route::post('/create', [AdminController::class, 'create_user'])->name('create');
@@ -60,11 +56,16 @@ Route::group(['prefix' => 'Admin'], function () {
     Route::get('/details/{id}', [AdminController::class, 'user_details']);
     Route::get('/updates', [AdminController::class,'updates'])->name('admin.updates');
     Route::get('/payroll', [AdminController::class,'payroll'])->name('admin.payroll');
+    Route::view('/payment-request', 'Admin.payment-request')->name('admin.requestt');
+    Route::get('/status', [AdminController::class, 'payment_status'])->name('admin.status');
+    Route::get('/statuschnage/{id}', [AdminController::class, 'statuschnage'])->name('admin.statuschnage');
+    Route::get('/requests', [AdminController::class, 'requests'])->name('admin.requests');
     // Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 });
 // ================================= Project Manager  Routes =========================
 Route::group(['prefix' => 'Manager'], function () {
+    Route::view('/employes', 'Admin.employes')->name('admin.employes');
     Route::view('/project', 'Admin.project-posting')->name('admin.project-posting');
     Route::post('/assign-project', [ManagerController::class, 'assigning_projects'])->name('manager.assignprojects');
     Route::post('/chat-visibility', [AdminController::class,'chat_visibility'])->name('admin.chat-visibility');
@@ -77,7 +78,7 @@ Route::group(['prefix' => 'Manager'], function () {
 
 });
 // ================================= Designer Routes =========================
-Route::group(['prefix' => 'Designer'], function () {
+Route::group(['prefix' => 'Designer','middleware' => ['auth:web']], function () {
     Route::view('/index', 'Designer.index')->name('designer.index');
     Route::post('/update_information', [SettingsController::class, 'update_information'])->name('designer.update_information');
     Route::post('/change_password', [SettingsController::class, 'change_password'])->name('designer.change_password');
@@ -89,17 +90,21 @@ Route::group(['prefix' => 'Designer'], function () {
 });
 
 // ================================= Employee Routes =========================
-Route::group(['prefix' => 'Employee'], function () {
+Route::group(['prefix' => 'Employee','middleware' => ['auth:web']], function () {
     Route::view('/index', 'Employee.index')->name('employee.index');
     Route::post('/update_information', [SettingsController::class, 'update_information'])->name('employee.update_information');
     Route::post('/change_password', [SettingsController::class, 'change_password'])->name('employee.change_password');
     Route::view('/settings', 'Employee.password-settings')->name('employee.settings');
     Route::view('/profile', 'Employee.profile-settings')->name('employee.profile-settings');
+    Route::view('/payment-request', 'Employee.pyment-request')->name('employee.requestt');
+    Route::post('/request', [EmployeeController::class, 'payment_request'])->name('employee.request');
+    Route::get('/status', [EmployeeController::class, 'payment_status'])->name('employee.status');
 });
 
 
+
 // ================================= Client Routes =========================
-Route::group(['prefix' => 'Client'], function () {
+Route::group(['prefix' => 'Client','middleware' => ['auth:web']], function () {
     Route::view('/index', 'Client.index')->name('client.index');
     Route::post('/update_information', [SettingsController::class, 'update_information'])->name('client.update_information');
     Route::post('/change_password', [SettingsController::class, 'change_password'])->name('client.change_password');

@@ -43,11 +43,6 @@
       <div class="container-fluid">
         <div class="row">
 
-          <div class="col-lg-12">
-            <div class="line-cahrt block">
-              <canvas id="lineCahrt"></canvas>
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -105,7 +105,7 @@
                         <th scope="row">{{$item->id}}</th>
                         <td>{{$item->project->title}}</td>
                         <td>{{$item->designer->name}}</td>
-                        <td>{{$item->project->budget}}</td>
+                        <td>{{$item->project->budget}}.00$</td>
                         <td>{{$item->project->intrested}}</td>
                     </tr>
                     @endforeach

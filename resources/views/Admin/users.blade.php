@@ -45,7 +45,7 @@
                     <th>First Name</th>
                     <th>Email</th>
                     <th>Action</th>
-                    <th>Access </th>
+                    <!-- <th>Access </th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -61,9 +61,9 @@
                         <i class="fa fa-trash" aria-hidden="true" style="font-size:20px;color:red;"></i>
                       </a>
                     </td>
-                    <td>
+                    <!-- <td>
                       <button type="submit" class="btn btn-primary"><a style="text-decoration:none;color:white" href="{{url('Admin/details/'.$row->id)}}">Details</a></button>
-                    </td>
+                    </td> -->
                   </tr>
                   <div id="myModal{{$p}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                     <div role="document" class="modal-dialog">

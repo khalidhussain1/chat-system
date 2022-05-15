@@ -13,7 +13,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  background: url("bg.png"), -webkit-linear-gradient(bottom, black, #DB6574);
+  background: url("bg.png"), -webkit-linear-gradient(bottom, black, #079893);
 }
 ::selection{
   color: #fff;
@@ -78,7 +78,7 @@ form .page .field button{
   width: 100%;
   height: calc(100% + 5px);
   border: none;
-  background: #DB6574;
+  background: #079893;
   margin-top: -20px;
   border-radius: 5px;
   color: #fff;
@@ -192,7 +192,7 @@ form .page .btns button.next{
    </head>
    <body>
       <div class="container">
-        <h2 style="color: #DB6574;">
+        <h2 style="color: #079893;">
             Project Description 
         </h2>
          <div class="progress-bar">

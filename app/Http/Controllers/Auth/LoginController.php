@@ -49,8 +49,11 @@ class LoginController extends Controller
         //    $role=$request->role;
 
         $input = $request->all();
+       
+    
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->role == 'admin' || auth()->user()->role == 'projectmanager' || auth()->user()->role == 'owner' ) {
+               
                 return redirect()->route('admin.index');
             } elseif (auth()->user()->role == 'designer') {
                 return redirect()->route('designer.index');

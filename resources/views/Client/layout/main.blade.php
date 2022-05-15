@@ -21,8 +21,9 @@
       <div class="container-fluid d-flex align-items-center justify-content-between">
         <div class="navbar-header">
           <!-- Navbar Header--><a href="index.html" class="navbar-brand">
-            <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Logo</strong></div>
-            <div class="brand-text brand-sm"><strong class="text-primary">L</strong></div>
+            <!-- <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">No Limit Logos</strong></div> -->
+                        <div class="brand-text brand-big visible text-uppercase"><img src="{{asset('logo.PNG')}}" style="width: 140px"></div>
+            <div class="brand-text brand-sm"><strong class="text-primary">NLL</strong></div>
           </a>
           <!-- Sidebar Toggle Btn-->
           <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
@@ -43,6 +44,7 @@
      
         <div class="avatar"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JyScJ3XAm0g9mNMQ1Ws7EI6LoVgs7_HDXg&usqp=CAU" alt="..." class="img-fluid rounded-circle"></div>
         
+        
     
         <div class="title">
        
@@ -53,7 +55,7 @@
       <ul class="list-unstyled">
         <li class=""><a href="{{url('Client/index')}}"> <i class="icon-home"></i>Dashboard</a></li>
         <li class=""><a href="{{url('Client/designers')}}"> <i class="icon-home"></i>Chat</a></li>
-        <li class=""><a href="{{url('/plan')}}"> <i class="icon-home"></i>Plan </a></li>
+        <li class=""><a href="{{url('/plan')}}"> <i class="icon-home"></i>Start Next Project  </a></li>
         <li class=""><a href="{{url('Client/projects')}}"> <i class="icon-home"></i>My Projects </a></li>
         <li class=""><a href="{{route('client.profile-settings')}}"> <i class="icon-home"></i>Settings</a></li>
       </ul>

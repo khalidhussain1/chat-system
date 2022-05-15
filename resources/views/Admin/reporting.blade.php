@@ -26,7 +26,7 @@
                     <input type="hidden" value="{{auth()->user()->id}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="assign_by" placeholder="Title" name="title" required>
                     <div class="col-md-12">
                         <select class="custom-select mt-2 bg-dark " name="project_id">
-                            <option selected>Select Projec Here </option>
+                            <option selected>Select Project Here </option>
                             @foreach(projects() as $item)
                             <option value="{{$item->id}}">{{$item->title}}</option>
                             @endforeach
