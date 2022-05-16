@@ -45,7 +45,7 @@ class AdminController extends Controller
 
         $data = User::get();
 
-        return view('admin.users', compact('data'));
+        return view('Admin.users', compact('data'));
     }
     function update_user(Request $req)
     {
@@ -164,19 +164,19 @@ class AdminController extends Controller
 
     public function updates(){
         $data=Update::get();
-     return view('admin.updates')->with('data',$data);
+     return view('Admin.updates')->with('data',$data);
     }
 public function payroll(){
 
     $data=Project::all();
     
 
-    return view('admin.payroll',compact('data'));
+    return view('Admin.payroll',compact('data'));
 }
 
 public function post_project(Request $request){
 
-    return view('admin.postproject');
+    return view('Admin.postproject');
 }
 
 public function post(Request $request ){
@@ -224,7 +224,7 @@ $user=ProjectDetail::latest()->first();
 public function payment_status(){
     $data=PaymentRequest::where('employee_id',Auth()->user()->id)->get();
     // dd($data);
-    return view('admin.status',compact('data'));
+    return view('Admin.status',compact('data'));
 }  
 
 public function requests(){
@@ -232,7 +232,7 @@ public function requests(){
     $data=PaymentRequest::where('status',0)->get();
     // dd($data);
 
-    return view('admin.requests',compact('data'));
+    return view('Admin.requests',compact('data'));
 }
 
 public function statuschnage($id){

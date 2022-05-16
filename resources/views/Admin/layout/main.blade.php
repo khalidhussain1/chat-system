@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-@include('admin.layout.head')
+@include('Admin.layout.head')
 
 <body>
   @section('head')

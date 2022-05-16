@@ -1,10 +1,10 @@
-@extends('admin.layout.main')
+@extends('Admin.layout.main')
 @section('content')
 </head>
 <body>
   <div class="page-content">
 
- @include('admin.includes.statistics')
+ @include('Admin.includes.statistics')
     <section class="no-padding-top no-padding-bottom">
       <div class="container-fluid">
         <div class="row">
