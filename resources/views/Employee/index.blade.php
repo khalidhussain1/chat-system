@@ -1,6 +1,7 @@
 @extends('Employee.layout.main')
 @section('content')
 </head>
+
 <body>
 
 
@@ -21,17 +22,12 @@
               </div>
             </div>
           </div>
-        
-
-
         </div>
       </div>
     </section>
-
     <section class="no-padding-bottom">
       <div class="container-fluid">
         <div class="row">
-
           <div class="col-lg-12">
             <div class="line-cahrt block">
               <canvas id="lineCahrt"></canvas>
